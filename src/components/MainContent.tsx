@@ -5,7 +5,6 @@ import remarkBreaks from 'remark-breaks'
 import mainMd from '../../main.md?raw'
 import { ScrollTop } from './ScrollTop'
 import { TableOfContents } from './TableOfContents'
-import { Card, Tabs, TabItem, Collapsible, Accordion, AccordionItem, Comparison, ComparisonItem, TipBox, Grid, GridItem, Alert, Progress, ProgressItem, CallToAction } from './RichComponents'
 
 const MainContent = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null)
@@ -174,23 +173,6 @@ const MainContent = () => {
                     className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
                   />
                 ),
-                ...({
-                  Card: (props: any) => <Card {...props} />,
-                  Tabs: (props: any) => <Tabs {...props} />,
-                  TabItem: (props: any) => <TabItem {...props} />,
-                  Collapsible: (props: any) => <Collapsible {...props} />,
-                  Accordion: (props: any) => <Accordion {...props} />,
-                  AccordionItem: (props: any) => <AccordionItem {...props} />,
-                  Comparison: (props: any) => <Comparison {...props} />,
-                  ComparisonItem: (props: any) => <ComparisonItem {...props} />,
-                  TipBox: (props: any) => <TipBox {...props} />,
-                  Grid: (props: any) => <Grid {...props} />,
-                  GridItem: (props: any) => <GridItem {...props} />,
-                  Alert: (props: any) => <Alert {...props} />,
-                  Progress: (props: any) => <Progress {...props} />,
-                  ProgressItem: (props: any) => <ProgressItem {...props} />,
-                  CallToAction: (props: any) => <CallToAction {...props} />,
-                } as any),
               }}
             >
               {mainMd}
