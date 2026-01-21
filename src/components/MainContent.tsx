@@ -5,6 +5,7 @@ import remarkBreaks from 'remark-breaks'
 import mainMd from '../../main.md?raw'
 import { ScrollTop } from './ScrollTop'
 import { TableOfContents } from './TableOfContents'
+import { Card, Tabs, TabItem, Collapsible, Accordion, AccordionItem, Comparison, ComparisonItem, TipBox, Grid, GridItem, Alert, Progress, ProgressItem, CallToAction } from './RichComponents'
 
 const MainContent = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null)
@@ -111,6 +112,85 @@ const MainContent = () => {
                     className="border-l-4 border-blue-500 pl-4 py-1 my-6 bg-gray-50 dark:bg-gray-800 italic"
                   />
                 ),
+                code: ({ ...props }) => {
+                  if (props.className?.includes('language-')) {
+                    return (
+                      <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-4">
+                        <pre className="text-sm">
+                          <code {...props} />
+                        </pre>
+                      </div>
+                    )
+                  }
+                  return (
+                    <code
+                      {...props}
+                      className="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono"
+                    />
+                  )
+                },
+                pre: ({ ...props }) => {
+                  return (
+                    <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-4">
+                      <pre className="text-sm" {...props} />
+                    </div>
+                  )
+                },
+                table: ({ ...props }) => (
+                  <div className="overflow-x-auto my-4">
+                    <table
+                      {...props}
+                      className="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
+                    />
+                  </div>
+                ),
+                thead: ({ ...props }) => (
+                  <thead
+                    {...props}
+                    className="bg-gray-50 dark:bg-gray-800"
+                  />
+                ),
+                tbody: ({ ...props }) => (
+                  <tbody
+                    {...props}
+                    className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700"
+                  />
+                ),
+                tr: ({ ...props }) => (
+                  <tr
+                    {...props}
+                    className="hover:bg-gray-50 dark:hover:bg-gray-800"
+                  />
+                ),
+                th: ({ ...props }) => (
+                  <th
+                    {...props}
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                  />
+                ),
+                td: ({ ...props }) => (
+                  <td
+                    {...props}
+                    className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
+                  />
+                ),
+                ...({
+                  Card: (props: any) => <Card {...props} />,
+                  Tabs: (props: any) => <Tabs {...props} />,
+                  TabItem: (props: any) => <TabItem {...props} />,
+                  Collapsible: (props: any) => <Collapsible {...props} />,
+                  Accordion: (props: any) => <Accordion {...props} />,
+                  AccordionItem: (props: any) => <AccordionItem {...props} />,
+                  Comparison: (props: any) => <Comparison {...props} />,
+                  ComparisonItem: (props: any) => <ComparisonItem {...props} />,
+                  TipBox: (props: any) => <TipBox {...props} />,
+                  Grid: (props: any) => <Grid {...props} />,
+                  GridItem: (props: any) => <GridItem {...props} />,
+                  Alert: (props: any) => <Alert {...props} />,
+                  Progress: (props: any) => <Progress {...props} />,
+                  ProgressItem: (props: any) => <ProgressItem {...props} />,
+                  CallToAction: (props: any) => <CallToAction {...props} />,
+                } as any),
               }}
             >
               {mainMd}
